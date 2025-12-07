@@ -1,0 +1,261 @@
+.emi-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.emi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.emi-table thead {
+  background: rgba(99, 102, 241, 0.2);
+  position: sticky;
+  top: 0;
+}
+
+.emi-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--glass-border);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.emi-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+.emi-row:hover {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.emi-row.active {
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.emi-row.active:hover {
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.emi-table .transaction-id {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.emi-table .amount {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.emi-table .emi-amount {
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.emi-table .tenure {
+  color: var(--text-muted);
+}
+
+.emi-table .progress {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.emi-table .progress .paid {
+  color: #86efac;
+  font-weight: 600;
+}
+
+.emi-table .progress .total {
+  color: var(--text-muted);
+}
+
+.emi-table .next-date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.emi-table .next-amount {
+  font-weight: 600;
+  color: #fbbf24;
+}
+
+.emi-table .status {
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.active {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border: 1px solid #4ade80;
+}
+
+.status-badge.closed {
+  background: rgba(107, 114, 128, 0.2);
+  color: #d1d5db;
+  border: 1px solid #9ca3af;
+}
+
+.status-badge.overdue {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid #f87171;
+}
+
+.no-emi {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Light theme adjustments */
+html.light-theme .emi-table-container {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+html.light-theme .emi-table thead {
+  background: #f1f5f9;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+html.light-theme .emi-table th {
+  color: #1e293b;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+html.light-theme .emi-table td {
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+
+html.light-theme .emi-row {
+  background: white;
+  transition: background-color 0.2s;
+}
+
+html.light-theme .emi-row:hover {
+  background: #f0f4f8;
+}
+
+html.light-theme .emi-row.active {
+  background: #f0fdf4;
+}
+
+html.light-theme .emi-row.active:hover {
+  background: #dcfce7;
+}
+
+html.light-theme .emi-table .transaction-id {
+  color: #6366f1;
+  font-weight: 700;
+}
+
+html.light-theme .emi-table .amount {
+  color: #6366f1;
+  font-weight: 700;
+}
+
+html.light-theme .emi-table .emi-amount {
+  color: #ec4899;
+  font-weight: 600;
+}
+
+html.light-theme .emi-table .tenure {
+  color: #64748b;
+}
+
+html.light-theme .emi-table .progress .paid {
+  color: #16a34a;
+}
+
+html.light-theme .emi-table .progress .total {
+  color: #64748b;
+}
+
+html.light-theme .emi-table .next-date {
+  color: #64748b;
+}
+
+html.light-theme .emi-table .next-amount {
+  color: #d97706;
+}
+
+html.light-theme .status-badge.active {
+  background: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #86efac;
+}
+
+html.light-theme .status-badge.closed {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+html.light-theme .status-badge.overdue {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .emi-table {
+    font-size: 0.85rem;
+  }
+
+  .emi-table th,
+  .emi-table td {
+    padding: 0.5rem;
+  }
+
+  .emi-table .tenure {
+    font-size: 0.8rem;
+  }
+
+  .emi-table .next-date {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .emi-table-container {
+    margin: 0.5rem 0;
+  }
+
+  .emi-table {
+    font-size: 0.75rem;
+  }
+
+  .emi-table th,
+  .emi-table td {
+    padding: 0.4rem;
+  }
+
+  .status-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
