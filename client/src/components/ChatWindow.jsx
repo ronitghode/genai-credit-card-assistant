@@ -10,7 +10,6 @@ const ChatWindow = ({ userId }) => {
   const [lastInputWasVoice, setLastInputWasVoice] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [inputType, setInputType] = useState("text"); // text | password
 
   // Voice State
   const [voices, setVoices] = useState([]);
@@ -141,7 +140,6 @@ const ChatWindow = ({ userId }) => {
     setInput("");
     setLoading(true);
     setLastInputWasVoice(isVoice);
-    setInputType("text"); // Reset input type after sending
 
     try {
       const res = await api.post("/chat", {
@@ -150,18 +148,14 @@ const ChatWindow = ({ userId }) => {
         channel: "web"
       });
 
-      const { reply, type, actionResult, ui } = res.data;
-
-      if (ui && ui.inputType) {
-        setInputType(ui.inputType);
-      }
+      const { reply, type, actionResult } = res.data;
 
       let finalReply = reply;
       let messageMetadata = {};
-
+      
       if (type === "ACTION" && actionResult) {
         finalReply = actionResult.message;
-
+        
         // Pass PDF download data to metadata if available
         if (actionResult.isPdfDownload) {
           messageMetadata = {
@@ -170,7 +164,7 @@ const ChatWindow = ({ userId }) => {
             pdfParams: actionResult.params
           };
         }
-
+        
         // Pass transaction data to metadata if available
         if (actionResult.isTableView && actionResult.transactions) {
           messageMetadata = {
@@ -178,7 +172,7 @@ const ChatWindow = ({ userId }) => {
             transactions: actionResult.transactions
           };
         }
-
+        
         // Pass EMI data to metadata if available
         if (actionResult.isTableView && actionResult.emiData) {
           messageMetadata = {
@@ -260,8 +254,8 @@ const ChatWindow = ({ userId }) => {
       <div className="messages-area">
         {messages.map((m, idx) => (
           <div key={idx} className="flex flex-col">
-            <MessageBubble
-              role={m.role}
+            <MessageBubble 
+              role={m.role} 
               content={m.content}
               metadata={{
                 isTableView: m.isTableView,
@@ -294,9 +288,8 @@ const ChatWindow = ({ userId }) => {
 
       <form onSubmit={handleSubmit} className="input-area">
         <input
-          type={inputType}
           className="chat-input"
-          placeholder={inputType === "password" ? "Enter your PIN/Password..." : "Ask about onboarding, card delivery, EMI, bill, payments..."}
+          placeholder="Ask about onboarding, card delivery, EMI, bill, payments..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />

@@ -22,7 +22,7 @@ export const handleChat = async (req, res) => {
       conversationHistory: history
     });
 
-    const { type, action, params, answer, ui } = aiResult;
+    const { type, action, params, answer } = aiResult;
 
     let actionResult = null;
 
@@ -138,14 +138,10 @@ export const handleChat = async (req, res) => {
       reply: answer,
       type,
       action,
-      actionResult,
-      ui
+      actionResult
     });
   } catch (err) {
     console.error("Chat error:", err.message);
-    if (err.response && err.response.data) {
-      console.error("Action API error:", err.response.data);
-    }
     return res.status(500).json({ error: "Internal server error" });
   }
 };
